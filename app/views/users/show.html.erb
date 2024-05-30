@@ -7,7 +7,12 @@
 
 <p>
   <strong>Portrait:</strong>
-  <%= link_to @user.portrait.filename, @user.portrait if @user.portrait.attached? %>
+  <%= link_to @user.portrait.filename, url_for(@user.portrait) if @user.portrait.attached? %>
+</p>
+
+<p>
+  <strong>Portrait:</strong>
+  <%= image_tag @user.portrait.variant(resize_to_limit: [100, 100]).processed if @user.portrait.variable? %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
